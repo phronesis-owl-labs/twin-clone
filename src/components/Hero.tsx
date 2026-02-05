@@ -18,37 +18,21 @@ const CARDS = [
 ]
 
 export default function Hero({ scrollY }: HeroProps) {
-  // Calculate scroll progress (0 to 1 over 300vh)
   const scrollProgress = useMemo(() => {
-    const maxScroll = window.innerHeight * 2
+    const maxScroll = typeof window !== 'undefined' ? window.innerHeight * 2 : 1000
     return Math.min(scrollY / maxScroll, 1)
   }, [scrollY])
 
-  // Grid transforms: starts zoomed in, zooms out as you scroll
-  const gridScale = 1 + (1 - scrollProgress) * 2 // 3 -> 1
+  const gridScale = 1 + (1 - scrollProgress) * 2
   const gridOpacity = scrollProgress < 0.8 ? 1 : 1 - (scrollProgress - 0.8) * 5
-
-  // Title transforms
-  const titleOpacity = scrollProgress < 0.1
-    ? scrollProgress * 10
-    : scrollProgress > 0.7
-      ? 1 - (scrollProgress - 0.7) * 3.33
-      : 1
-
+  const titleOpacity = scrollProgress < 0.1 ? scrollProgress * 10 : scrollProgress > 0.7 ? 1 - (scrollProgress - 0.7) * 3.33 : 1
   const titleTransform = scrollProgress < 0.1 ? 16 - scrollProgress * 160 : 0
 
   return (
     <section className="hero">
       <div className="hero__scroll-container">
         <div className="hero__sticky">
-          {/* Card Grid */}
-          <div
-            className="hero__grid"
-            style={{
-              transform: `scale(${gridScale})`,
-              opacity: gridOpacity,
-            }}
-          >
+          <div className="hero__grid" style={{ transform: `scale(${gridScale})`, opacity: gridOpacity }}>
             {CARDS.map((card, i) => (
               <div key={i} className="hero__card">
                 <div className="hero__card-media">
@@ -64,20 +48,8 @@ export default function Hero({ scrollY }: HeroProps) {
               </div>
             ))}
           </div>
-
-          {/* Title Overlay */}
-          <div
-            className="hero__title"
-            style={{
-              opacity: titleOpacity,
-              transform: `translateY(${titleTransform}px)`,
-            }}
-          >
-            <h1>
-              The AI<br />
-              <em>company</em><br />
-              <span>builder</span>
-            </h1>
+          <div className="hero__title" style={{ opacity: titleOpacity, transform: `translateY(${titleTransform}px)` }}>
+            <h1>The AI<br /><em>company</em><br /><span>builder</span></h1>
           </div>
         </div>
       </div>
