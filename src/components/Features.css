@@ -79,6 +79,7 @@
   transform: scale(0.92);
 }
 
+/* Mobile */
 .features__mobile {
   display: block;
   padding: 15vh 1.25rem;
@@ -94,4 +95,13 @@
   min-height: 40vh;
   opacity: 1;
   transform: none;
+}
+
+.features__mobile .features__block h2 {
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  margin-bottom: 1rem;
+}
+
+.features__mobile .features__block p {
+  font-size: 0.9rem;
 }
