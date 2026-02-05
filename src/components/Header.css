@@ -1,3 +1,4 @@
+/* Header - Fixed nav like twin.so */
 .header {
   position: fixed;
   top: 0;
@@ -15,13 +16,14 @@
 }
 
 .header--scrolled {
-  background-color: var(--color-background);
+  background-color: rgba(255, 252, 231, 0.95);
+  backdrop-filter: blur(8px);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
 }
 
 .header__banner {
-  background-color: var(--color-accent);
-  color: var(--color-accent-foreground);
+  background-color: var(--color-dark-brown);
+  color: var(--color-cream);
   text-align: center;
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
@@ -70,11 +72,19 @@
 
 .header__logo {
   color: var(--color-foreground);
+  text-decoration: none;
   transition: opacity 0.3s;
 }
 
 .header__logo:hover {
   opacity: 0.7;
+}
+
+.header__logo-text {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-style: italic;
 }
 
 .header__logo svg {
