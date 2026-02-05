@@ -1,0 +1,94 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  transition: all 0.5s ease-out;
+  opacity: 0;
+  transform: translateY(-1rem);
+}
+
+.header--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.header--scrolled {
+  background-color: var(--color-background);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
+.header__banner {
+  background-color: var(--color-accent);
+  color: var(--color-accent-foreground);
+  text-align: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.header__banner a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.header__banner a:hover {
+  opacity: 0.8;
+}
+
+.header__banner-mobile {
+  display: inline;
+}
+
+.header__banner-desktop {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .header__banner-mobile {
+    display: none;
+  }
+  .header__banner-desktop {
+    display: inline;
+  }
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .header__inner {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+.header__logo {
+  color: var(--color-foreground);
+  transition: opacity 0.3s;
+}
+
+.header__logo:hover {
+  opacity: 0.7;
+}
+
+.header__logo svg {
+  height: 1.5rem;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .header__nav {
+    gap: 1rem;
+  }
+}
